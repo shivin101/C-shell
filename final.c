@@ -66,7 +66,7 @@ void add_jobs(pid_t pid,char *name)
 {
         job *new_job =(job *)malloc(sizeof(job)); //allocating memory for new job
         new_job->pid=pid;
-        new_job->name==strdup(name); 
+        new_job->name=strdup(name); 
         new_job->next=NULL;
         //fprintf(stderr,"adding a new job to the process list\n");
         if(head==NULL)
