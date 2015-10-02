@@ -762,9 +762,9 @@ char*  redir(char *command)
         int fd;
         if(commands1[1]!=NULL){
                 char * file1=getfilename(commands1[1]); 
-                if(flag)
+                if(!flag)
                 {
-                        if((fd=open(file1,O_WRONLY|O_CREAT|O_TRUNC))<0)
+                        if((fd=open(file1,O_WRONLY|O_CREAT|O_TRUNC, S_IRUSR | S_IRGRP | S_IWGRP | S_IWUSR))<0)
                         {   
                                 perror("file opening error");
                                 return commands2[0];
@@ -772,7 +772,7 @@ char*  redir(char *command)
                 }
                 else
                 {
-                        if((fd=open(file1,O_WRONLY|O_CREAT|O_APPEND))<0)
+                        if((fd=open(file1,O_WRONLY|O_CREAT|O_APPEND, S_IRUSR | S_IRGRP | S_IWGRP | S_IWUSR))<0)
                         {   
                                 perror("file opening error");
                                 return commands2[0];
